@@ -36,7 +36,7 @@ npm i data_pick
 
 - 商品类`ProductBean.js`（第一层级）
 ```javascript
-import { MAPPER_BEAN } from 'data_pick';
+import { BEAN_SUFFIX } from 'data_pick';
 import SkuBean from './SkuBean.js';
 
 /**
@@ -49,7 +49,7 @@ export default class ProductBean {
    bbSkus;
    discountPrice;
    /* 如果有第二层级的类属性，需要额外添加的方法，重点！重点！重点！ */
-   get [`bbSkus${MAPPER_BEAN}`]() {
+   get [`bbSkus${BEAN_SUFFIX}`]() {
       return SkuBean;
    }
 }
@@ -85,7 +85,7 @@ const data = dataPick(metadata,ProductBean)
 
 - 商品类`ProductJson.js`（第一层级）
 ```javascript
-import { MAPPER_BEAN } from 'data_pick';
+import { BEAN_SUFFIX } from 'data_pick';
 import SkuJson from './SkuJson.js';
 
 export default {
@@ -95,7 +95,7 @@ export default {
    bbSkus: null,
    discountPrice: null,
    /* 如果有第二层级的json类型，需要额外添加的方法，重点！重点！重点！ */
-   get [`bbSkus${MAPPER_BEAN}`]() {
+   get [`bbSkus${BEAN_SUFFIX}`]() {
       return SkuJson;
    }
 };

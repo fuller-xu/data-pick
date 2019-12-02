@@ -60,5 +60,5 @@ const dataPick = (data, classType) => {
 
 module.exports = {
   dataPick,
-  MAPPER_BEAN
+  BEAN_SUFFIX
 };
