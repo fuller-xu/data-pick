@@ -128,8 +128,8 @@ const data = dataPick(metadata,jsonBean)
 ## 使用场景举例
 
 1. 在未使用数据筛选的性能情况
-    ![在未使用数据筛选的性能情况](https://jeno.oss-cn-shanghai.aliyuncs.com/web/npm/low_performance.gif)
+![在未使用数据筛选的性能情况](https://jeno.oss-cn-shanghai.aliyuncs.com/web/npm/low_performance.gif)
 
 2. 使用数据筛选后的性能情况
-    ![使用数据筛选后的性能情况](https://jeno.oss-cn-shanghai.aliyuncs.com/web/npm/high_performance.gif)
+![使用数据筛选后的性能情况](https://jeno.oss-cn-shanghai.aliyuncs.com/web/npm/high_performance.gif)
 
