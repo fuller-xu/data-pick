@@ -1,6 +1,6 @@
 {
-  "name": "data_pick",
-  "version": "1.0.0",
+  "name": "data-pick",
+  "version": "1.3.4",
   "description": "pick",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jen0/data_pick.git"
+    "url": "git+https://github.com/Jen0/data-pick.git"
   },
   "keywords": [
     "pick"
@@ -16,7 +16,7 @@
   "author": "Jeno",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jen0/data_pick/issues"
+    "url": "https://github.com/Jen0/data-pick/issues"
   },
-  "homepage": "https://github.com/Jen0/data_pick#readme"
+  "homepage": "https://github.com/Jen0/data-pick#readme"
 }
