@@ -54,10 +54,9 @@ const dataPick = (data, classType) => {
     // 上面两行等同于下面的一行
     let instance = Reflect.construct(classType, []);
     return jsonPick(data, instance);
-  } else if (typeof classType === "object") {
-    return jsonPick(data, classType);
   }
-  return data;
+  // typeof classType === "object"
+  return jsonPick(data, classType);
 };
 
 module.exports = {
