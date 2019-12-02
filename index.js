@@ -11,7 +11,6 @@ const BEAN_SUFFIX = "__bean__";
 const filterField = (obj, instance) => {
   const properties = Object.keys(instance);
   let result = Object.create(null);
-  console.log(dataPick);
   properties.forEach(field => {
     // 首先判断对象的属性是否还是个对象，如果是，就获取该属性值类型的方法，再根据类型筛选
     let beanField = `${field}${BEAN_SUFFIX}`;
