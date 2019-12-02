@@ -30,13 +30,13 @@ npm i data_pick
 
 ### 创建实体类(两种声明方式选一种)
 
-> 注意：如果有字段属性是对象或是数组，必须提供返回属性值类型的方法（如果数组中的元素是js基本类型的除外）需要添加获取`class`类型的**get**方法，**方法名命名为：字段名+固定后缀**
+> 注意：如果有字段属性是对象或是数组，必须提供返回属性值类型的方法（如果数组中的元素是js基本类型的除外）需要添加获取`class`类型的**get**方法，**方法名命名为：固定前缀+字段名**
 
 #### 1.创建class声明文件
 
 - 商品类`ProductBean.js`（第一层级）
 ```javascript
-import { BEAN_SUFFIX } from 'data_pick';
+import { PREFIX_BEAN } from 'data_pick';
 import SkuBean from './SkuBean.js';
 
 /**
@@ -49,7 +49,7 @@ export default class ProductBean {
    bbSkus;
    discountPrice;
    /* 如果有第二层级的类属性，需要额外添加的方法，重点！重点！重点！ */
-   get [`bbSkus${BEAN_SUFFIX}`]() {
+   get [`${PREFIX_BEAN}bbSkus`]() {
       return SkuBean;
    }
 }
@@ -85,7 +85,7 @@ const data = dataPick(metadata,ProductBean)
 
 - 商品类`ProductJson.js`（第一层级）
 ```javascript
-import { BEAN_SUFFIX } from 'data_pick';
+import { PREFIX_BEAN } from 'data_pick';
 import SkuJson from './SkuJson.js';
 
 export default {
@@ -95,7 +95,7 @@ export default {
    bbSkus: null,
    discountPrice: null,
    /* 如果有第二层级的json类型，需要额外添加的方法，重点！重点！重点！ */
-   get [`bbSkus${BEAN_SUFFIX}`]() {
+   get [`${PREFIX_BEAN}bbSkus`]() {
       return SkuJson;
    }
 };

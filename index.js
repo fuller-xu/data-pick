@@ -1,7 +1,49 @@
 /**
  * bean字段后缀常量,用来获取属性值的bean类型
  */
-const BEAN_SUFFIX = "__bean__";
+const PREFIX_BEAN = "__bean__";
+
+/**
+ * 返回固定格式的字段
+ * @param {String} field
+ */
+const getFieldWithPrefix = field => `${PREFIX_BEAN}${field}`;
+
+/**
+ * 获取实例的属性集合
+ * @param {Object} instance
+ */
+const getProperties = instance => Object.keys(instance);
+
+/**
+ * 循环属性
+ * @param {Array} properties 属性集合
+ * @param {Function} fn 执行函数
+ * @param {Any} args 参数
+ */
+const forEachFields = (properties, fn, ...args) => {
+  properties.forEach(field => {
+    fn && fn(field, ...args);
+  });
+};
+
+/**
+ * 给固定格式的字段设置隐藏。方便使用者遍历使用。
+ * @param {String} field
+ */
+const setFieldHidden = (field, instance) => {
+  let beanField = getFieldWithPrefix(field);
+  if (beanField in instance) {
+    const oldVal = instance[beanField];
+    delete instance[beanField];
+    Object.defineProperty(instance, beanField, {
+      value: oldVal,
+      enumerable: false,
+      configurable: true,
+      writable: true
+    });
+  }
+};
 
 /**
  * 返回properties数组中的字段的对象
@@ -9,11 +51,10 @@ const BEAN_SUFFIX = "__bean__";
  * @param {Object} instance 对象bean空实例
  */
 const filterField = (obj, instance) => {
-  const properties = Object.keys(instance);
   let result = Object.create(null);
-  properties.forEach(field => {
-    // 首先判断对象的属性是否还是个对象，如果是，就获取该属性值类型的方法，再根据类型筛选
-    let beanField = `${field}${BEAN_SUFFIX}`;
+  // 首先判断对象的属性是否还是个对象，如果是，就获取该属性值类型的方法，再根据类型筛选
+  forEachFields(getProperties(instance), field => {
+    let beanField = getFieldWithPrefix(field);
     if (beanField in instance) {
       result[field] = dataPick(obj[field], instance[beanField]);
     } else result[field] = obj[field];
@@ -55,10 +96,15 @@ const dataPick = (data, classType) => {
     return jsonPick(data, instance);
   }
   // typeof classType === "object"
-  return jsonPick(data, classType);
+  else {
+    // 设置字段类型为不可枚举
+    let instance = classType;
+    forEachFields(getProperties(instance), setFieldHidden, instance);
+    return jsonPick(data, instance);
+  }
 };
 
 module.exports = {
   dataPick,
-  BEAN_SUFFIX
+  PREFIX_BEAN
 };
