@@ -41,7 +41,7 @@ const jsonPick = (data, instance) => {
  * @param {Class|Object} classType 需要转换的class类型或者json对象
  */
 const dataPick = (data, classType) => {
-  if (!data) return data;
+  if (!data || typeof data !== "object") return data;
   if (
     !classType ||
     (typeof classType !== "function" && typeof classType !== "object")
