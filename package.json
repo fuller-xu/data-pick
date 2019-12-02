@@ -1,0 +1,22 @@
+{
+  "name": "data_pick",
+  "version": "1.0.0",
+  "description": "pick",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jen0/data_pick.git"
+  },
+  "keywords": [
+    "pick"
+  ],
+  "author": "Jeno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jen0/data_pick/issues"
+  },
+  "homepage": "https://github.com/Jen0/data_pick#readme"
+}
