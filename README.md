@@ -23,7 +23,7 @@
 ## 安装
 
 ```bash
-npm i data_pick
+npm i data-pick
 ```
 
 ## 使用方法
@@ -36,7 +36,7 @@ npm i data_pick
 
 - 商品类`ProductBean.js`（第一层级）
 ```javascript
-import { PREFIX_BEAN } from 'data_pick';
+import { PREFIX_BEAN } from 'data-pick';
 import SkuBean from './SkuBean.js';
 
 /**
@@ -70,7 +70,7 @@ export default class SkuBean {
 
 #### class声明的方法使用
 ```javascript
-import { dataPick } from 'data_pick';
+import { dataPick } from 'data-pick';
 import ProductBean from 'ProductBean'; // 第一步声明的class
 
 // metadata 是需要处理的元数据
@@ -85,7 +85,7 @@ const data = dataPick(metadata,ProductBean)
 
 - 商品类`ProductJson.js`（第一层级）
 ```javascript
-import { PREFIX_BEAN } from 'data_pick';
+import { PREFIX_BEAN } from 'data-pick';
 import SkuJson from './SkuJson.js';
 
 export default {
@@ -116,7 +116,7 @@ export default {
 
 #### json声明的方法使用
 ```javascript
-import { dataPick } from 'data_pick';
+import { dataPick } from 'data-pick';
 import ProductJson from 'ProductJson'; // 第一步声明的ProductJson
 
 // metadata 是需要处理的元数据
