@@ -63,7 +63,7 @@ const filterField = (obj, instance) => {
 };
 
 /**
- * 直接传入json数据
+ * 对实例对象进行过滤
  * @param {Object|Array} data // 元数据
  * @param {Object} instance // 数据实例
  */
@@ -76,7 +76,7 @@ const jsonPick = (data, instance) => {
 };
 
 /**
- * 传入class 定义的类型
+ * 返回对应的数据结构
  * @param {Object|Array} data 元数据
  * @param {Class|Object} classType 需要转换的class类型或者json对象
  */
@@ -88,20 +88,20 @@ const dataPick = (data, classType) => {
   ) {
     throw new Error("The second param is expected to be a function or object");
   }
+  let instance;
   if (typeof classType === "function") {
     // let instance = Object.create(classType.prototype);
     // classType.call(instance);
     // 上面两行等同于下面的一行
-    let instance = Reflect.construct(classType, []);
-    return jsonPick(data, instance);
+    instance = Reflect.construct(classType, []);
   }
   // typeof classType === "object"
   else {
     // 设置字段类型为不可枚举
-    let instance = classType;
+    instance = classType;
     forEachFields(getProperties(instance), setFieldHidden, instance);
-    return jsonPick(data, instance);
   }
+  return jsonPick(data, instance);
 };
 
 module.exports = {

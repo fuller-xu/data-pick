@@ -1,6 +1,6 @@
 {
   "name": "data-pick",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "pick",
   "main": "index.js",
   "scripts": {
