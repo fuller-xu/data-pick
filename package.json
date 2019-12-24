@@ -1,10 +1,14 @@
 {
   "name": "data-pick",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "pick",
-  "main": "index.js",
+  "main": "lib/index.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "./node_modules/.bin/babel src --out-dir lib",
+    "rm-rf": "./node_modules/.bin/rimraf lib",
+    "terser": "./node_modules/.bin/terser ./lib/index.js -c -o ./lib/index.min.js",
+    "build": "npm run rm-rf && npm run babel && npm run terser"
   },
   "repository": {
     "type": "git",
@@ -22,5 +26,16 @@
     "url": "https://github.com/Jen0/data-pick/issues"
   },
   "homepage": "https://github.com/Jen0/data-pick#readme",
-  "dependencies": {}
+  "dependencies": {
+    "@babel/runtime": "^7.7.7",
+    "@babel/runtime-corejs3": "^7.7.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "rimraf": "^3.0.0",
+    "terser": "^4.4.3"
+  }
 }
