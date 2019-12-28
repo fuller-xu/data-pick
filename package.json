@@ -1,14 +1,12 @@
 {
   "name": "data-pick",
-  "version": "1.5.0",
-  "description": "pick",
-  "main": "lib/index.min.js",
+  "version": "1.5.3",
+  "description": "json pick and data pick",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "./node_modules/.bin/babel src --out-dir lib",
-    "rm-rf": "./node_modules/.bin/rimraf lib",
-    "terser": "./node_modules/.bin/terser ./lib/index.js -c -o ./lib/index.min.js",
-    "build": "npm run rm-rf && npm run babel && npm run terser"
+    "build": "webpack",
+    "prepublish": "webpack"
   },
   "repository": {
     "type": "git",
@@ -31,11 +29,12 @@
     "@babel/runtime-corejs3": "^7.7.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-env": "^7.7.7",
-    "rimraf": "^3.0.0",
-    "terser": "^4.4.3"
+    "babel-loader": "^8.0.6",
+    "terser-webpack-plugin": "^2.3.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }

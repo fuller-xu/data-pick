@@ -104,7 +104,7 @@ const dataPick = (data, classType) => {
   return jsonPick(data, instance);
 };
 
-module.exports = {
+export default {
   dataPick,
   PREFIX_BEAN
 };
